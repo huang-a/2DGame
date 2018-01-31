@@ -1,1 +1,10 @@
 # These are some useful git commands!!!
+
+"git pull" - Pull the changes from a repository.
+"git add ." - Adds everything in your folder to your local git repository.
+"git commit -m "Commit message goes here"" - Commit the changes to your local repository.
+"git push origin name-of-branch" - Push your changes to everyone's git repository. Won't show up on their computers until they pull the changes.
+
+"git branch" - List all the branches you have on your computer.
+"git checkout -b name-of-branch" - Create and switch to a new branch.
+"git checkout name-of-branch" - Switch to a different branch.
