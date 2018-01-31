@@ -1,0 +1,16 @@
+# Adeola
+- Create game window to appear on the screen.
+- MAP.
+
+# Alice
+- Define what a entity is in the game. So like everything in the game is an entity (like squirrel, obstacles, etc.)
+- Create Discord.
+
+# Eric
+- Create a positioning class. Define a coordinate system.
+
+# David
+- Make a Main Menu.
+
+# Pranav
+- Create GameState, which is just where EVERYTHING in the game lives.
