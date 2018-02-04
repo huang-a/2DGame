@@ -32,8 +32,6 @@ public class MainMenu {
 	}
 
 	public MainMenu(int frameWidth, int frameHeight){
-
-
 		menu=new JFrame("Menu");
 		start=new JButton("Start");
 		settings=new JButton("Settings");
