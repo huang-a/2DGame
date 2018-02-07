@@ -22,12 +22,8 @@ public class Main extends Application {
         gc.initialize();
 
 
-        // Setup the scene.
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root, 640, 480);
-
         stage.setOnCloseRequest(e -> { System.exit(0); });
-        stage.setScene(scene);
+        stage.setScene(gc.getScene());
         stage.setTitle("Squirrel Run");
         stage.show(); 
     }

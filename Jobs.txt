@@ -1,22 +1,26 @@
 # Adeola
-- Create game window to appear on the screen.
------ Map. Create a Map/World class that will be presented onto a GameState to display the game world.
+- Figure out the graphics stuff.
+
 
 # Alice
-- Define what a entity is in the game. So like everything in the game is an entity (like squirrel, obstacles, etc.)
------ A good way to build game objects is to create a generic "Entity" class that all other game objects can extend. For example, if we create a "Player" class later on, which is just the squirrel in the game, it can extend the Entity class so we don't have to re-write a lot of code. Or if we make an "Obstacle" class that can also extend Entity.
------ An Entity has some really basic variables and methods. It needs a Position (which Eric is working on), a width/height, some methods for moving its position, etc.
-- Create Discord.
+- Character class.
+
 
 # Eric
-- Create a positioning class. Define a coordinate system.
------ A "Position" is just a basic class that makes it easy for us to define a coordinate system without having to type the same thing in multiple places. It just needs int variables for the x, y positions and some methods for adding positions together, distance between positions.
+- Positioning (look up Vector math).
+
 
 # David
-- Make a Main Menu.
------ The main menu will depend on the GameState class to be implemented. The main menu will be an extension of a GameState that has some text and buttons to tell the user about the game. It will display the name of the game, "Squirrel Run", some buttons to start the game, see instructions, quit the game, and a nice picture to show the game.
------ Since we're using JavaFX, there are some really cool buttons and styling that you can use to create the main menu. There is not much to worry about at the moment, but once we have game states built in this will be a big job.
+- Main menu state with buttons, title, etc.
+
 
 # Pranav
-- Create GameState, which is just where EVERYTHING in the game lives.
------ A GameState is just a way to define what state the game is currently in. We will have a few GameStates (MainMenu, Game, Controls, and maybe a Pause Screen). GameState is an abstract class (just like Entity) which other classes will extend from. I will explain more of this later, but each game state needs its own variables for displaying things on the screen. It will also need to be initialized, updated, and drawn (which I will again explain later).
+- Other GameStates.
+
+
+# Max
+- UML diagram of classes/inheritance.
+
+
+# Jeremy
+- Input (moving, jumping, etc).
