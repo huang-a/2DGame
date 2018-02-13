@@ -1,7 +1,12 @@
 package States;
 
+import Controllers.*;
+import mainPackage.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class MainMenuState extends GameState {
 
@@ -10,7 +15,7 @@ public class MainMenuState extends GameState {
 	*	  VARIABLES		*
 	*					*
 	*********************/
-. .y 
+
 
 
 
@@ -21,8 +26,8 @@ public class MainMenuState extends GameState {
 	*					*
 	*********************/
 
-	public MainMenuState() {
-		super();
+	public MainMenuState(GameController gc) {
+		super(gc);
 
 
 
@@ -33,8 +38,8 @@ public class MainMenuState extends GameState {
 
 
 
-		root = new StackPane();
-		scene = new Scene(root, 720, 720);
+		root.getChildren().addAll(canvas);
+		scene = new Scene(root, Main.WIDTH, Main.HEIGHT);
 	}
 
 
@@ -47,15 +52,18 @@ public class MainMenuState extends GameState {
 	*********************/
 
 	public void initialize() {
-		System.out.println("Initialized!");
+		// System.out.println("Initialized!");
 	}
 
 	public void update() {
-		System.out.println("Updating");
+		// System.out.println("Updating");
 	}
 
 	public void draw() {
-		System.out.println("Drawing");
+		clear();
+
+		graphics.setFill(Color.GREEN);
+		graphics.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 	}
 
 
