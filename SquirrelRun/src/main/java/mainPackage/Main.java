@@ -8,6 +8,10 @@ import javafx.scene.layout.StackPane;
 
 
 public class Main extends Application {
+
+	public static int WIDTH = 640, HEIGHT = 480;
+
+
 	
 	public static void main(String[] args) {
 		Application.launch(args);

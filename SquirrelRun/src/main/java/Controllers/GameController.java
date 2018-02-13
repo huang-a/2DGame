@@ -38,7 +38,7 @@ public class GameController {
 	/** Constructor for the GameController. */
 	public GameController(Stage stage) {
 		states = new GameState[1];
-		states[0] = new MainMenuState();
+		states[0] = new MainMenuState(this);
 
 		currentState = 0;
 
