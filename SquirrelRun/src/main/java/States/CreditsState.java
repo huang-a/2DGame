@@ -7,24 +7,14 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 
-public class MainMenuState extends GameState {
+public class CreditsState extends GameState {
 
 	/********************
 	*					*
 	*	  VARIABLES		*
 	*					*
 	*********************/
-
-	HBox holder;
-	Label titleLabel;
-	Button playGameBtn;
-	Button creditsBtn;
-
-
 
 
 
@@ -36,26 +26,19 @@ public class MainMenuState extends GameState {
 	*					*
 	*********************/
 
-	public MainMenuState(GameController gc) {
+	public CreditsState(GameController gc) {
 		super(gc);
 
-		// Initialize the title screen elements.
-		holder = new HBox();
-		titleLabel = new Label("Squirrel Run");
-		playGameBtn = new Button("Play Game");
-		creditsBtn = new Button("Credits");
 
 
-		// Add those elements to the holder view.
-		holder.getChildren().addAll(titleLabel, playGameBtn, creditsBtn);
+
+		/* Add stuff to the game state. */
 
 
-		// Add action on button.
-		playGameBtn.setOnAction(e -> { this.gc.switchState(1); });
-		creditsBtn.setOnAction(e -> { this.gc.switchState(2); });
 
 
-		root.getChildren().addAll(canvas, holder);
+
+		root.getChildren().addAll(canvas);
 		scene = new Scene(root, Main.WIDTH, Main.HEIGHT);
 	}
 
@@ -79,7 +62,7 @@ public class MainMenuState extends GameState {
 	public void draw() {
 		clear();
 
-		graphics.setFill(Color.GREEN);
+		graphics.setFill(Color.BLUE);
 		graphics.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 	}
 

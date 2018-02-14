@@ -19,9 +19,11 @@ public class GameController {
 	/** All of the game states. */
 	GameState[] states;
 
-
 	/** The index in the array of the current game state. */
 	int currentState;
+
+	/** The window that the game is being displayed in. */
+	Stage window;
 
 
 
@@ -37,8 +39,12 @@ public class GameController {
 
 	/** Constructor for the GameController. */
 	public GameController(Stage stage) {
-		states = new GameState[1];
+		this.window = stage;
+
+		states = new GameState[3];
 		states[0] = new MainMenuState(this);
+		states[1] = new PlayState(this);
+		states[2] = new CreditsState(this);
 
 		currentState = 0;
 
@@ -70,6 +76,18 @@ public class GameController {
 	public Scene getScene() {
 		return states[currentState].getScene();
 	}
+
+
+
+	/** Switches to the game state at the specified index. */
+	public void switchState(int to) {
+		currentState = to;
+
+		states[currentState].initialize();
+
+		window.setScene(states[currentState].getScene());
+	}
+
 
 
 
