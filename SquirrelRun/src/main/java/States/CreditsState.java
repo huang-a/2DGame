@@ -62,7 +62,7 @@ public class CreditsState extends GameState {
 	public void draw() {
 		clear();
 
-		graphics.setFill(Color.BLUE);
+		graphics.setFill(Color.BLACK);
 		graphics.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 	}
 

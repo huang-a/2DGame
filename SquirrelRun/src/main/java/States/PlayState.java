@@ -62,7 +62,7 @@ public class PlayState extends GameState {
 	public void draw() {
 		clear();
 
-		graphics.setFill(Color.RED);
+		graphics.setFill(Color.ORANGE);
 		graphics.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 	}
 
