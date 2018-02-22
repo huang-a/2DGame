@@ -22,8 +22,8 @@ public abstract class GameState {
 	public GameController gc;
 
 
-	Canvas canvas;
-	GraphicsContext graphics;
+	public Canvas canvas;
+	public GraphicsContext graphics;
 
 
 
