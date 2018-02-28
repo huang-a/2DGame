@@ -19,6 +19,7 @@ public class PlayState extends GameState {
 	*					*
 	*********************/
 
+	/** The main game world. */
 	World world;
 
 
@@ -68,6 +69,8 @@ public class PlayState extends GameState {
 	public void draw() {
 		clear();
 
+		// These two lines are not necessary. They are just to show that the world
+		// is drawn on top of the play state.
 		graphics.setFill(Color.PURPLE);
 		graphics.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 

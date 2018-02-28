@@ -4,6 +4,8 @@ import javafx.scene.paint.Color;
 import mainPackage.*;
 import States.*;
 import Utilities.*;
+import java.util.*;
+import GameObjects.*;
 
 public class World {
 
@@ -14,11 +16,20 @@ public class World {
 	*					*
 	*********************/
 
+	/** A reference to the play state so that this object knows how to draw. */
 	PlayState playState;
 
+	/** The position of the game world. */
 	Position position;
 
+	/** The width and height of the world. */
 	int width, height;
+
+	/** All of the game objects in the world. */
+	ArrayList<GameObject> gameObjects;
+
+
+
 
 
 
@@ -27,7 +38,7 @@ public class World {
 
 	/********************
 	*					*
-	*	  VARIABLES		*
+	*	  CONSTRUCT		*
 	*					*
 	*********************/
 
@@ -36,6 +47,7 @@ public class World {
 		position = new Position(0,0);
 		width = Main.WIDTH;
 		height = Main.HEIGHT;
+		gameObjects = new ArrayList<>();
 	}
 
 
@@ -43,21 +55,47 @@ public class World {
 
 	/********************
 	*					*
-	*	  VARIABLES		*
+	*	  FUNCTIONS		*
+	*					*
+	*********************/
+
+	/** Returns the play state. */
+	public PlayState getPlayState() {
+		return playState;
+	}
+
+
+
+
+	/********************
+	*					*
+	*	   ABSTRACT		*
 	*					*
 	*********************/
 
 	public void initialize() {
-		System.out.println("Initialized!");
+		// Initialize each game object.
+		for(GameObject obj : gameObjects) {
+			obj.initialize();
+		}
 	}
 
 	public void update() {
-		System.out.println("Updating");
+		// Update each game object.
+		for(GameObject obj : gameObjects) {
+			obj.update();
+		}
 	}
 
 	public void draw() {
+		// Draw the background of the world.
 		playState.graphics.setFill(Color.SKYBLUE);
 		playState.graphics.fillRect(position.X, position.Y, Main.WIDTH, Main.HEIGHT);
+
+		// Draw every game object.
+		for(GameObject obj : gameObjects) {
+			obj.draw();
+		}
 	}
 
 

@@ -9,8 +9,12 @@ public class Position {
 	*					*
 	*********************/
 
+	/** The x position. */
 	public int X;
+
+	/** The y position. */
 	public int Y;
+	
 
 
 
