@@ -73,6 +73,7 @@ public class GameController {
 	}
 
 
+	/** Returns the scene for the current state. */
 	public Scene getScene() {
 		return states[currentState].getScene();
 	}

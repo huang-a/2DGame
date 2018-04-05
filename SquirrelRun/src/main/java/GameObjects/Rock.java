@@ -63,6 +63,13 @@ public class Rock extends GameObject {
 	public void draw() {
 		world.getPlayState().graphics.setFill(Color.GREEN);
 		world.getPlayState().graphics.fillRect(position.X, position.Y, width, height);
+
+		// Show the collision box.
+		world.getPlayState().graphics.setStroke(Color.RED);
+		world.getPlayState().graphics.strokeRect(collisionBox.getMinX(), 
+												collisionBox.getMinY(), 
+												collisionBox.getWidth(),
+												collisionBox.getHeight());
 	}
 
 

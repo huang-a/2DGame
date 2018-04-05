@@ -26,7 +26,7 @@ public class World {
 	int width, height;
 
 	/** All of the game objects in the world. */
-	ArrayList<GameObject> gameObjects;
+	public ArrayList<GameObject> gameObjects;
 
 
 
@@ -48,6 +48,8 @@ public class World {
 		width = Main.WIDTH;
 		height = Main.HEIGHT;
 		gameObjects = new ArrayList<>();
+
+		addRocksToWorld();
 	}
 
 
@@ -63,6 +65,23 @@ public class World {
 	public PlayState getPlayState() {
 		return playState;
 	}
+
+
+	/** Loads all of the rocks from a separate file, makes GameObjects out
+	of them, and adds them to the world. */
+	public void addRocksToWorld() {
+		Rock rock = new Rock(this);
+		rock.setPosition(100, 84);
+
+		Rock rock2 = new Rock(this);
+		rock2.setPosition(10, 30);
+
+
+		gameObjects.add(rock);
+		gameObjects.add(rock2);
+	}
+
+
 
 
 
@@ -81,9 +100,17 @@ public class World {
 	}
 
 	public void update() {
+		Rock r = (Rock)gameObjects.get(0);
+
 		// Update each game object.
 		for(GameObject obj : gameObjects) {
 			obj.update();
+
+			if(r != null) {
+				if(r.isCollingWith(obj)) {
+					System.out.println("Colliding!!!");
+				}
+			}			
 		}
 	}
 

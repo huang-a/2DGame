@@ -7,9 +7,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.input.*;
 import World.*;
 import States.*;
 import Utilities.*;
+import GameObjects.*;
 
 public class PlayState extends GameState {
 
@@ -47,6 +49,8 @@ public class PlayState extends GameState {
 
 		root.getChildren().addAll(canvas);
 		scene = new Scene(root, Main.WIDTH, Main.HEIGHT);
+
+		handleInput();
 	}
 
 
@@ -58,6 +62,36 @@ public class PlayState extends GameState {
 	*					*
 	*********************/
 
+	/** Handles all the input in the game. */
+	public void handleInput() {
+		Rock r = (Rock)world.gameObjects.get(0);
+
+		scene.setOnKeyPressed(e -> {
+			KeyCode keyCode = e.getCode();
+
+			switch(keyCode) {
+				case LEFT:
+					r.setPosition(r.position.X - 1, r.position.Y);
+					break;
+				case RIGHT:
+					r.setPosition(r.position.X + 1, r.position.Y);
+					break;
+				case DOWN:
+					r.setPosition(r.position.X, r.position.Y + 1);
+					break;
+				case UP:
+					r.setPosition(r.position.X, r.position.Y - 1);
+					break;
+			}
+		});
+		scene.setOnKeyReleased(e -> {
+			
+		});
+	}
+
+
+
+
 	public void initialize() {
 		world.initialize();
 	}
@@ -68,11 +102,6 @@ public class PlayState extends GameState {
 
 	public void draw() {
 		clear();
-
-		// These two lines are not necessary. They are just to show that the world
-		// is drawn on top of the play state.
-		graphics.setFill(Color.PURPLE);
-		graphics.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 
 		world.draw();
 	}
