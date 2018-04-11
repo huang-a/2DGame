@@ -70,22 +70,31 @@ public class PlayState extends GameState {
 			KeyCode keyCode = e.getCode();
 
 			switch(keyCode) {
-				case LEFT:
-					r.setPosition(r.position.X - 1, r.position.Y);
-					break;
-				case RIGHT:
-					r.setPosition(r.position.X + 1, r.position.Y);
-					break;
 				case DOWN:
-					r.setPosition(r.position.X, r.position.Y + 1);
+					r.down = true;
+					r.up = false;
+					// r.setPosition(r.getPosition().X, r.getPosition().Y + 1);
 					break;
 				case UP:
-					r.setPosition(r.position.X, r.position.Y - 1);
+					r.up = true;
+					r.down = false;
+					// r.setPosition(r.getPosition().X, r.getPosition().Y - 1);
 					break;
 			}
 		});
 		scene.setOnKeyReleased(e -> {
-			
+			KeyCode keyCode = e.getCode();
+
+			switch(keyCode) {
+				case DOWN:
+					r.down = false;
+					// r.setPosition(r.getPosition().X, r.getPosition().Y + 1);
+					break;
+				case UP:
+					r.up = false;
+					// r.setPosition(r.getPosition().X, r.getPosition().Y - 1);
+					break;
+			}
 		});
 	}
 
@@ -102,6 +111,8 @@ public class PlayState extends GameState {
 
 	public void draw() {
 		clear();
+		graphics.setFill(Color.RED);
+		graphics.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 
 		world.draw();
 	}

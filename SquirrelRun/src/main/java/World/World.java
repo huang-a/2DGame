@@ -100,18 +100,12 @@ public class World {
 	}
 
 	public void update() {
-		Rock r = (Rock)gameObjects.get(0);
-
 		// Update each game object.
 		for(GameObject obj : gameObjects) {
-			obj.update();
-
-			if(r != null) {
-				if(r.isCollingWith(obj)) {
-					System.out.println("Colliding!!!");
-				}
-			}			
+			obj.update();		
 		}
+
+		position.X -= 3.5;
 	}
 
 	public void draw() {
