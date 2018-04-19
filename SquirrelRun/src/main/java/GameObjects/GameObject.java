@@ -17,7 +17,7 @@ public abstract class GameObject {
 
 	/** Where the game object is located on the screen. */
 	Position position;
-	
+
 	/** The width and height of the world. */
 	int width, height;
 
@@ -27,8 +27,12 @@ public abstract class GameObject {
 	/** The x and y velocities. */
 	float xVel, yVel;
 
+	/** the y glid acceleration and fall acceleration. */
+	float yGlideAcc, yFallAcc;
 	/** Booleans for movement. */
 	public boolean up, down;
+
+	public boolean jump, fall;
 
 
 
@@ -49,8 +53,11 @@ public abstract class GameObject {
 		this.height = 32;
 		this.up = false;
 		this.down = false;
+		this.jump = false;
+		this.fall = false;
 		this.xVel = 1;
 		this.yVel = 1;
+		this.yFallAcc = -2; // gravity acceleration is -9.8
 		this.collisionBox = new Rectangle2D.Float(position.X,position.Y,width,height);
 	}
 
@@ -87,19 +94,35 @@ public abstract class GameObject {
 
 
 	/** Moves the game object in a particular direction. */
+
 	public void move() {
-		if(up) {
-			position.Y -= yVel;
-		}
-		else if(down) {
+			position.X += xVel;
+		collisionBox.setRect(position.X, position.Y, width, height);
+	}
+
+	/** makes game object jump**/
+	public void jump() {
+		if(jump) {
+			yVel = -10;
 			position.Y += yVel;
 		}
 		collisionBox.setRect(position.X, position.Y, width, height);
 	}
 
+	public void glid() {
+		yVel=1;
+		position.Y += yVel;
 
+		collisionBox.setRect(position.X, position.Y, width, height);
+	}
 
-
+	public void fall() {
+		if(fall) {
+			yVel = 3;
+			position.Y += yVel;
+		}
+		collisionBox.setRect(position.X, position.Y, width, height);
+	}
 
 
 	/********************
@@ -110,11 +133,15 @@ public abstract class GameObject {
 
 
 	public abstract void initialize();
-	
+
 	public void update() {
-		move();
+		jump();
+		if (yVel=0) {
+			glide();
+		}
+		fall();
 	}
-	
+
 	public abstract void draw();
 
 

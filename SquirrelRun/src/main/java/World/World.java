@@ -49,7 +49,7 @@ public class World {
 		height = Main.HEIGHT;
 		gameObjects = new ArrayList<>();
 
-		addRocksToWorld();
+		addPlayerToWorld();
 	}
 
 
@@ -67,18 +67,14 @@ public class World {
 	}
 
 
-	/** Loads all of the rocks from a separate file, makes GameObjects out
+	/** Loads player from a separate file, makes GameObjects out
 	of them, and adds them to the world. */
-	public void addRocksToWorld() {
-		Rock rock = new Rock(this);
-		rock.setPosition(100, 84);
 
-		Rock rock2 = new Rock(this);
-		rock2.setPosition(10, 30);
+	public void addPlayerToWorld() {
+		Player p = new Player(this);
+		p.setPosition(100, 34);
 
-
-		gameObjects.add(rock);
-		gameObjects.add(rock2);
+		gameObjects.add(p);
 	}
 
 
@@ -102,7 +98,7 @@ public class World {
 	public void update() {
 		// Update each game object.
 		for(GameObject obj : gameObjects) {
-			obj.update();		
+			obj.update();
 		}
 
 		position.X -= 3.5;

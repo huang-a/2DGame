@@ -2,24 +2,9 @@ package GameObjects;
 
 import javafx.scene.paint.Color;
 import World.*;
+import javafx.scene.input.KeyCode;
 
-public class Rock extends GameObject {
-
-	/********************
-	*					*
-	*	  VARIABLES		*
-	*					*
-	*********************/
-
-
-
-
-
-
-
-
-
-
+public class Player extends GameObject {
 
 	/********************
 	*					*
@@ -27,7 +12,22 @@ public class Rock extends GameObject {
 	*					*
 	*********************/
 
-	public Rock(World world) {
+
+
+
+
+
+
+
+
+
+	/********************
+	*					*
+	*	  VARIABLES		*
+	*					*
+	*********************/
+
+	public Player(World world) {
 		super(world);
 	}
 
@@ -40,7 +40,18 @@ public class Rock extends GameObject {
 	*					*
 	*********************/
 
-
+	public void detectKey(KeyCode keyCode) {
+		switch(keyCode) {
+			case UP: // sets jump to true when player presses UP
+				this.jump = true;
+				this.fall = false;
+				break;
+			case DOWN: // sets fall to true when player presses down
+				this.jump = false;
+				this.fall = true;
+				break;
+		}
+	}
 
 
 
@@ -58,7 +69,6 @@ public class Rock extends GameObject {
 
 	public void update() {
 		super.update();
-		move();
 	}
 
 	public void draw() {
