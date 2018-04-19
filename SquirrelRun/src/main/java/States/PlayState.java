@@ -69,8 +69,19 @@ public class PlayState extends GameState {
 		scene.setOnKeyPressed(e -> {
 			KeyCode keyCode = e.getCode();
 
-			p.detectKey(keyCode);
-
+			switch (keyCode) {
+				case UP:
+					if (!p.jump) { // if jump has not been pressed yet
+						p.jump = true;
+						p.jump(); // player jumps
+					}
+					break;
+				case DOWN:
+					if (!p.fall) {
+						p.fall = true;
+						p.fall();
+					}
+			}
 		});
 	}
 

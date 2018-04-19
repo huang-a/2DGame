@@ -72,7 +72,7 @@ public class World {
 
 	public void addPlayerToWorld() {
 		Player p = new Player(this);
-		p.setPosition(100, 34);
+		p.setPosition(100, 200);
 
 		gameObjects.add(p);
 	}

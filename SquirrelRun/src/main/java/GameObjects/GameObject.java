@@ -28,11 +28,11 @@ public abstract class GameObject {
 	float xVel, yVel;
 
 	/** the y glid acceleration and fall acceleration. */
-	float yGlideAcc, yFallAcc;
+	double yFallAcc;
 	/** Booleans for movement. */
 	public boolean up, down;
 
-	public boolean jump, fall;
+	public boolean jump, fall, jumpHappened;
 
 
 
@@ -55,9 +55,10 @@ public abstract class GameObject {
 		this.down = false;
 		this.jump = false;
 		this.fall = false;
-		this.xVel = 1;
-		this.yVel = 1;
-		this.yFallAcc = -2; // gravity acceleration is -9.8
+		this.jumpHappened = false; //checks that jump happened
+		this.xVel = 0;
+		this.yVel = 0;
+		this.yFallAcc = 1; // gravity acceleration is -.05
 		this.collisionBox = new Rectangle2D.Float(position.X,position.Y,width,height);
 	}
 
@@ -100,31 +101,36 @@ public abstract class GameObject {
 		collisionBox.setRect(position.X, position.Y, width, height);
 	}
 
-	/** makes game object jump**/
-	public void jump() {
-		if(jump) {
-			yVel = -10;
-			position.Y += yVel;
+	/** makes game object jump; object is subject to gravitational pull**/
+	public void jump() { // how do we apply gravity to this?
+		if (true) {
+			yVel = -20;
 		}
-		collisionBox.setRect(position.X, position.Y, width, height);
 	}
 
-	public void glid() {
+	/** object falls at a constant rate */
+	public void glide() {
 		yVel=1;
 		position.Y += yVel;
 
 		collisionBox.setRect(position.X, position.Y, width, height);
 	}
 
+	/** object falls with gravitational force */
 	public void fall() {
 		if(fall) {
 			yVel = 3;
-			position.Y += yVel;
 		}
+	}
+
+	public void animateJump() {
+		position.Y += yVel;
 		collisionBox.setRect(position.X, position.Y, width, height);
 	}
 
-
+	public void gravity() {
+		yVel += yFallAcc; // applies gravity to acceleration
+	}
 	/********************
 	*					*
 	*	   ABSTRACT		*
@@ -135,11 +141,10 @@ public abstract class GameObject {
 	public abstract void initialize();
 
 	public void update() {
-		jump();
-		if (yVel=0) {
-			glide();
+		animateJump();
+		if (jump) { // if jump is true
+			gravity(); // apply gravity
 		}
-		fall();
 	}
 
 	public abstract void draw();

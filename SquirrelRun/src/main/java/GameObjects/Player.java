@@ -40,6 +40,7 @@ public class Player extends GameObject {
 	*					*
 	*********************/
 
+/**
 	public void detectKey(KeyCode keyCode) {
 		switch(keyCode) {
 			case UP: // sets jump to true when player presses UP
@@ -52,7 +53,7 @@ public class Player extends GameObject {
 				break;
 		}
 	}
-
+*/
 
 
 
