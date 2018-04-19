@@ -32,7 +32,9 @@ public abstract class GameObject {
 	/** Booleans for movement. */
 	public boolean up, down;
 
-	public boolean jump, fall, jumpHappened;
+	public boolean jump, fall;
+
+	public boolean toggleGravity = false;
 
 
 
@@ -55,7 +57,6 @@ public abstract class GameObject {
 		this.down = false;
 		this.jump = false;
 		this.fall = false;
-		this.jumpHappened = false; //checks that jump happened
 		this.xVel = 0;
 		this.yVel = 0;
 		this.yFallAcc = 1; // gravity acceleration is -.05
@@ -103,24 +104,21 @@ public abstract class GameObject {
 
 	/** makes game object jump; object is subject to gravitational pull**/
 	public void jump() { // how do we apply gravity to this?
-		if (true) {
+		if (jump) {
 			yVel = -20;
+			toggleGravity = true;
 		}
 	}
 
 	/** object falls at a constant rate */
 	public void glide() {
-		yVel=1;
-		position.Y += yVel;
-
-		collisionBox.setRect(position.X, position.Y, width, height);
+		toggleGravity = false;
+		yVel=2;
 	}
 
 	/** object falls with gravitational force */
 	public void fall() {
-		if(fall) {
-			yVel = 3;
-		}
+		toggleGravity = true;
 	}
 
 	public void animateJump() {
@@ -129,7 +127,9 @@ public abstract class GameObject {
 	}
 
 	public void gravity() {
-		yVel += yFallAcc; // applies gravity to acceleration
+		if (toggleGravity) { // apply gravity when toggleGravity is true
+			yVel += yFallAcc; // applies gravity to acceleration
+		}
 	}
 	/********************
 	*					*
@@ -142,8 +142,11 @@ public abstract class GameObject {
 
 	public void update() {
 		animateJump();
-		if (jump) { // if jump is true
-			gravity(); // apply gravity
+		gravity(); // apply gravity
+		if (yVel > 0 && !fall) { // when player starts falling and fall is false
+			glide(); // start gliding
+		} else if (fall) { // if fall is true
+			toggleGravity = true;
 		}
 	}
 
