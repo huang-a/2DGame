@@ -50,6 +50,7 @@ public class World {
 		gameObjects = new ArrayList<>();
 
 		addPlayerToWorld();
+		addFloorToWorld();
 	}
 
 
@@ -72,12 +73,18 @@ public class World {
 
 	public void addPlayerToWorld() {
 		Player p = new Player(this);
-		p.setPosition(100, 200);
+		p.setPosition(100, 420);
 
 		gameObjects.add(p);
 	}
 
 
+	public void addFloorToWorld() {
+		Floor f = new Floor(this);
+		f.setPosition(0, 460);
+
+		gameObjects.add(f);
+	}
 
 
 

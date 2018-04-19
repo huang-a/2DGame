@@ -36,7 +36,7 @@ public abstract class GameObject {
 
 	public boolean toggleGravity = false;
 
-
+	public boolean colliding = false;
 
 
 
@@ -51,8 +51,8 @@ public abstract class GameObject {
 	public GameObject(World world) {
 		this.world = world;
 		this.position = new Position(0, 0);
-		this.width = 32;
-		this.height = 32;
+		this.width = 40;
+		this.height = 40;
 		this.up = false;
 		this.down = false;
 		this.jump = false;
@@ -61,6 +61,7 @@ public abstract class GameObject {
 		this.yVel = 0;
 		this.yFallAcc = 1; // gravity acceleration is -.05
 		this.collisionBox = new Rectangle2D.Float(position.X,position.Y,width,height);
+		this.colliding = false;
 	}
 
 
@@ -87,7 +88,7 @@ public abstract class GameObject {
 
 
 	/** Checks if this game object is colliding with another one. */
-	public boolean isCollingWith(GameObject other) {
+	public boolean isCollidingWith(GameObject other) {
 		if(this.collisionBox.intersects(other.collisionBox)) {
 			return true;
 		}
@@ -98,7 +99,7 @@ public abstract class GameObject {
 	/** Moves the game object in a particular direction. */
 
 	public void move() {
-			position.X += xVel;
+		position.X += xVel;
 		collisionBox.setRect(position.X, position.Y, width, height);
 	}
 
@@ -145,8 +146,15 @@ public abstract class GameObject {
 		gravity(); // apply gravity
 		if (yVel > 0 && !fall) { // when player starts falling and fall is false
 			glide(); // start gliding
-		} else if (fall) { // if fall is true
+		}
+		else if (fall) { // if fall is true
 			toggleGravity = true;
+		}
+		if (colliding) {
+			yVel = 0;
+			toggleGravity = false;
+			colliding = false;
+			position.Y = 420;
 		}
 	}
 

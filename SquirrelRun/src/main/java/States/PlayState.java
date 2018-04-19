@@ -86,8 +86,6 @@ public class PlayState extends GameState {
 	}
 
 
-
-
 	public void initialize() {
 		world.initialize();
 	}
