@@ -106,7 +106,7 @@ public abstract class GameObject {
 	/** makes game object jump; object is subject to gravitational pull**/
 	public void jump() { // how do we apply gravity to this?
 		if (jump) {
-			yVel = -20;
+			yVel = -26;
 			toggleGravity = true;
 		}
 	}
@@ -151,10 +151,12 @@ public abstract class GameObject {
 			toggleGravity = true;
 		}
 		if (colliding) {
-			yVel = 0;
-			toggleGravity = false;
-			colliding = false;
-			position.Y = 420;
+			yVel = 0; // no longer goes DOWN
+			jump = false; // jump=false --> player can jump again
+			fall = false;
+			toggleGravity = false; // no  more gravity
+			colliding = false; // colliding is false
+			position.Y = 420; // Reset position
 		}
 	}
 
