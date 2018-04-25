@@ -3,7 +3,7 @@ package GameObjects;
 import javafx.scene.paint.Color;
 import World.*;
 
-public class Rock extends GameObject {
+public class Floor extends GameObject {
 
 	/********************
 	*					*
@@ -27,8 +27,10 @@ public class Rock extends GameObject {
 	*					*
 	*********************/
 
-	public Rock(World world) {
+	public Floor(World world) {
 		super(world);
+		this.width = 640;
+		this.height = 20;
 	}
 
 
@@ -66,7 +68,7 @@ public class Rock extends GameObject {
 		world.getPlayState().graphics.fillRect(position.X, position.Y, width, height);
 
 		// Show the collision box.
-		world.getPlayState().graphics.setStroke(Color.RED);
+		world.getPlayState().graphics.setStroke(Color.ORANGE);
 		world.getPlayState().graphics.strokeRect(collisionBox.getMinX(),
 												collisionBox.getMinY(),
 												collisionBox.getWidth(),

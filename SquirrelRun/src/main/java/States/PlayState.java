@@ -64,41 +64,26 @@ public class PlayState extends GameState {
 
 	/** Handles all the input in the game. */
 	public void handleInput() {
-		Rock r = (Rock)world.gameObjects.get(0);
+		Player p = (Player)world.gameObjects.get(0);
 
 		scene.setOnKeyPressed(e -> {
 			KeyCode keyCode = e.getCode();
 
-			switch(keyCode) {
-				case DOWN:
-					r.down = true;
-					r.up = false;
-					// r.setPosition(r.getPosition().X, r.getPosition().Y + 1);
-					break;
+			switch (keyCode) {
 				case UP:
-					r.up = true;
-					r.down = false;
-					// r.setPosition(r.getPosition().X, r.getPosition().Y - 1);
+					if (!p.jump) { // if jump has not been pressed yet
+						p.jump = true;
+						p.jump(); // player jumps
+					}
 					break;
-			}
-		});
-		scene.setOnKeyReleased(e -> {
-			KeyCode keyCode = e.getCode();
-
-			switch(keyCode) {
 				case DOWN:
-					r.down = false;
-					// r.setPosition(r.getPosition().X, r.getPosition().Y + 1);
-					break;
-				case UP:
-					r.up = false;
-					// r.setPosition(r.getPosition().X, r.getPosition().Y - 1);
-					break;
+					if (!p.fall) {
+						p.fall = true;
+						p.fall();
+					}
 			}
 		});
 	}
-
-
 
 
 	public void initialize() {
