@@ -28,9 +28,15 @@ public class World {
 	/** All of the game objects in the world. */
 	public ArrayList<GameObject> gameObjects;
 
+	/** The counter for when a new item should be spawned. */
+	int spawnCounter;
+
+	/** The longest time to take before spawning. */
+	int low = 10;
 
 
-
+	// Delete later.
+	int timer = 0;
 
 
 
@@ -47,6 +53,7 @@ public class World {
 		position = new Position(0,0);
 		width = Main.WIDTH;
 		height = Main.HEIGHT;
+		spawnCounter = 10;
 		gameObjects = new ArrayList<>();
 
 		addPlayerToWorld();
@@ -70,7 +77,6 @@ public class World {
 
 	/** Loads player from a separate file, makes GameObjects out
 	of them, and adds them to the world. */
-
 	public void addPlayerToWorld() {
 		Player p = new Player(this);
 		p.setPosition(100, 420);
@@ -79,12 +85,21 @@ public class World {
 	}
 
 
+	/** Adds the floor to the game world. */
 	public void addFloorToWorld() {
 		Floor f = new Floor(this);
 		f.setPosition(0, 460);
 
 		gameObjects.add(f);
 	}
+
+
+	/** Generate random obstacle. */
+	public void generateRandomObstacle() {
+
+	}
+
+
 
 
 
@@ -108,7 +123,24 @@ public class World {
 			obj.update();
 		}
 
-		position.X -= 3.5;
+		// position.X -= 3.5;
+
+		// Update the spawn counter.
+		if(spawnCounter > 0) {
+			spawnCounter -= 1;
+		} else {
+			Random rand = new Random();
+			int randomNumber = rand.nextInt(4)+low;
+			spawnCounter = randomNumber;
+			timer += 1;
+
+			System.out.println("RANDOM NUMBER: "+randomNumber);
+			System.out.println("LOW: "+low);
+		}
+
+		if(timer >= 20) {
+			if(low - 1 > 0) low -= 1;
+		}
 	}
 
 	public void draw() {
