@@ -77,7 +77,7 @@ public class PlayState extends GameState {
 					}
 					break;
 				case DOWN:
-					if (!p.fall) {
+					if (!p.fall && p.jump) {
 						p.fall = true;
 						p.fall();
 					}
