@@ -1,22 +1,22 @@
 Mechanics
 Checkpoints
 Party system
-4 people in the party.
+4 people in the party
 Once a person is dead, that person can't be replaced.
-Each person in a party has a special skill(cook, mechanic, etc)
-If a person dies,certain tasks become harder but still possible 
+Each person in a party has a special skill(cook, mechanic, etc.)
+If a person dies, certain tasks become harder but still possible 
 
 
 Finalized story 
-The start is on a boat in the Atlantic Ocean escaping and there are 4 paths to choose from:east,west,north,south, and one direction leads to immediate death.. The players don't know where they are,but it is obvious which one leads to death.
+The start is on a boat in the Atlantic Ocean escaping, and there are 4 paths to choose from: east, west, north, south, and one direction leads to immediate death. The players don't know where they are, but it is obvious which one leads to death.
 
 
 Game Puzzles Ideas:
 
 Log book that gives riddles (Alice)
 Puzzles that have to do with the story (Eric)
-Random puzzles (when you get something special out of it) ()
-Conflicts that require you to think. (ex: if a boat is sinking, what to do)(Sam)
-Real-life knowledge puzzle (Dan).
+Random puzzles (when you get something special out of it)
+Conflicts that require you to think (ex: if a boat is sinking, what to do)(Sam)
+Real-life knowledge puzzle (Dan)
 
 ** Save after every checkpoint.
